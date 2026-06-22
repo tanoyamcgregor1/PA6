@@ -1,0 +1,37 @@
+# Name: Tanoya McGregor
+# Course: COP2073C
+# Assignment: Programming Assignment 6
+# Date: 06/21/2026
+
+adjust_values <- function(values) {
+  result <- try((values - 1) >= 1, silent = TRUE)
+
+  if (class(result) == "try-error") {
+    return(rep(NA, length(values)))
+  } else {
+    return(result)
+  }
+}
+
+# Test 1: Numeric vectors using an apply function
+numeric_tests <- list(
+  c(1, 2, 3, 4),
+  c(5, 7, 8, 9),
+  c(1, 11, 2006)
+)
+
+numeric_results <- lapply(numeric_tests, adjust_values)
+
+cat("Numeric vector tests:\n")
+print(numeric_results)
+
+
+# Test 2: Vector with a string element to test exception handling
+mixed_tests <- list(
+  c(1, 2, "pink", 4)
+)
+
+mixed_results <- lapply(mixed_tests, adjust_values)
+
+cat("\nMixed vector test:\n")
+print(mixed_results) 
